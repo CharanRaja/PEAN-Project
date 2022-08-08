@@ -1,0 +1,21 @@
+<app-header></app-header>
+<section>
+  <div class="container">
+    <div class="user signinBx">
+      <div class="imgBx"><img src="../../assets/images.jpg" alt="" /></div>
+      <div class="formBx">
+        <form [formGroup]="loginform">
+          <h2>Sign In</h2>
+          <input type="text" placeholder="Email Id" formControlName="emailId" />
+          <p class="invalid" *ngIf="submitAttempt && loginform.controls.emailId.invalid">
+            Please Enter Email Id</p>
+          <input type="password" placeholder="Password" formControlName="password" />
+          <p class="invalid" *ngIf="submitAttempt && loginform.controls.password.invalid">
+            Please Enter a password</p>
+          <button class="btn text-center" style="background-color: #FA4A0C;color: white;border-radius: 40px;    margin-left: 35%;
+          margin-top: 2%;width: 8rem;font-size: 19px;font-weight: 800" (click)="onSubmit()">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

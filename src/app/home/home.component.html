@@ -1,0 +1,31 @@
+<app-header></app-header>
+<section>
+  <div class="container" style="margin-top: 2%;">
+    <label style="
+        font-size: 30px;
+        margin-left: 2%;
+    ">Users List Count ({{userList ? userList.length : 0}})</label>
+    <!-- </div> -->
+    <table class="datatable table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center">SI No</th>
+          <th class="text-center">First Name</th>
+          <th class="text-center">Last Name</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userList ; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.emailId}}</td>
+          <td>{{user.country}}</td>
+        </tr>
+        <p *ngIf="(userList && userList.length === 0)">No Records Found</p>
+      </tbody>
+    </table>
+  </div>
+</section>

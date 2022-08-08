@@ -1,0 +1,48 @@
+<app-header></app-header>
+<section>
+    <div class="container">
+        <div class="user signinBx">
+            <div class="imgBx"><img src="../../assets/images1.jpg" alt="" /></div>
+            <div class="formBx">
+
+                <form [formGroup]="signUpform">
+                    <h2>Sign Up</h2>
+                    <input type="text" formControlName="firstName" placeholder="First Name" />
+                    <p class="invalid" *ngIf="!signUpform.controls.firstName.valid && submitAttempt ">
+                        Please Enter firstname
+                    </p>
+                    <input type="text" formControlName="lastName" placeholder="Last Name" />
+                    <p class="invalid" *ngIf="!signUpform.controls.lastName.valid && submitAttempt ">
+                        Please Enter lastname
+                    </p>
+                    <input type="text" formControlName="emailId" placeholder="Email Id" (blur)="emailIdCheck()" />
+                    <p *ngIf="userExists && signUpform.controls.emailId.valid" class="invalid">EmailId already exists!!
+                    </p>
+                    <p *ngIf="usernotExists && signUpform.controls.emailId.valid" class="valid">EmailId is available</p>
+                    <p class="invalid" *ngIf="!signUpform.controls.emailId.valid && submitAttempt ">
+                        Please Enter email</p>
+                    <input type="password" formControlName="password"
+                        pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,15}$"
+                        placeholder="Create Password" />
+                    <p class="invalid" *ngIf="!signUpform.controls.password.valid && submitAttempt">
+                        Password must be min 8 char, 1 uppercase, 1 numeric and 1 special char</p>
+                    <input type="password" (keypress)="passCheck()" formControlName="confirmPassword"
+                        placeholder="Confirm Password" />
+                    <p class="invalid" *ngIf="!signUpform.controls.confirmPassword.valid  && submitAttempt">
+                        Password and Confirm Password must be same..!!</p>
+                    <input type="number" placeholder="Mobile Number" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                        formControlName="mobile" />
+                    <p class="invalid" *ngIf=" !signUpform.controls.mobile.valid && submitAttempt ">
+                        Please Enter Mobile Number
+                    </p>
+                    <input type="text" formControlName="country" placeholder="Country" />
+                    <p class="invalid" *ngIf=" !signUpform.controls.country.valid && submitAttempt ">
+                        Please Enter country
+                    </p>
+                    <button class="btn text-center" style="background-color: #FA4A0C;color: white;border-radius: 40px;margin-left: 35%;
+            margin-top: 2%;width: 8rem;font-size: 19px;font-weight: 800" (click)="onSubmit()">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
